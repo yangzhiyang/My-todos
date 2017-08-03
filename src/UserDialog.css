@@ -1,0 +1,69 @@
+.UserDialog-Wrapper{ 
+/*全屏*/      
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  bottom: 0; 
+  right: 0; 
+/*内容居中*/  
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  background:#2C8EBB;
+}
+.UserDialog{
+  padding-top: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 20em;
+  background: white;
+  box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
+  padding-bottom: 30px;
+  position: relative;
+}
+.UserDialog>h1{
+    text-align: center;
+    color: #2C8EBB;
+    font-size: 2.5em;
+}
+.UserDialog form>.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.UserDialog form>.row input{
+  padding:4px;
+}
+.UserDialog form>.row>input[type="text"]:focus,
+.UserDialog form>.row>input[type="password"]:focus{
+    outline-color: #2C8Ebb;
+}
+.UserDialog form>.row>button{
+    cursor: pointer;
+    background-color: #2C8EBB;
+    color: #fff;
+    border: none;
+    padding: 4px 0;
+    border-radius: 3px;
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    line-height: 2em;
+}
+.UserDialog form>.row>span{
+  margin-top: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom: 1px solid;
+}
+
+.UserDialog .signInOrSignUp > nav:first-child{ padding: 1em; margin-left: -2em;}
+.UserDialog .signInOrSignUp > nav:first-child label{ margin-left: 2em; cursor: pointer;}
+.UserDialog .signInOrSignUp > .panes { padding: 0 1em 1em; }
+.UserDialog .forgotPassword > h3 {padding: 1em;text-align: center;}
+.UserDialog .forgotPassword > form { padding: 0 1em 1em; }
+
+.UserDialog form>.row{ display: flex; padding: .3em 0; }
+.UserDialog form>.row>label:first-child{ width: 4em; }

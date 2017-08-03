@@ -1,0 +1,28 @@
+.TodoItem{
+   padding: .5em;
+   display: flex;
+   align-items: center;
+}
+.TodoItem input[type="checkbox"]{
+  display: none;
+}
+.TodoItem i{
+  font-size: 2em;
+  cursor: pointer;
+}
+
+ .TodoItem>.title{
+   flex-grow: 1;
+   padding: 0 .5em;
+}
+.TodoItem>.completed~.title{
+  text-decoration: line-through;
+  color: #888;
+}
+.TodoItem>button{
+  font-size: 19px;
+  cursor: pointer;
+}
+.TodoItem>button:hover{
+  color: red;
+}
