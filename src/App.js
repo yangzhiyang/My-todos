@@ -42,10 +42,13 @@ class App extends Component {
     })
     return (
       <div className="App">
-        <LeftAside user={this.state.user}/>
+        <aside>
+          <LeftAside user={this.state.user}/>
+          {this.state.user.id ? <button className=" iconfont icon-tuichu" onClick={this.signOut.bind(this)}></button> : null}
+        </aside>
+
         <main>
           <h1>{this.state.user.username||'我'}的待办
-            {/* {this.state.user.id ? <button className="iconfont icon-tuichu" onClick={this.signOut.bind(this)}></button> : null} */}
           </h1>
           <div className="inputWrapper">
             <TodoInput content={this.state.newTodo} 

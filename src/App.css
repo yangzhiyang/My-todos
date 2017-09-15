@@ -12,11 +12,29 @@
   display: flex;
   justify-content: center;
 }
-.App > .leftAside {
+.App > aside {
   min-width: 300px;
   width: 15vw;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #eee;
+  border-radius: 10px 0 0 10px;
+  
 
+}
+.App > aside .leftAside{
+  flex-grow: 1;
+}
+.App > aside  button {
+  flex-grow: 0;
+  font-size: 2em;
+  background: transparent;
+  border-width: 0px;
+  color: #2C8EBB;
+  cursor: pointer;
+  padding: 20px 0;
+  border-radius: 5px;
 }
 .App > main {
   flex-grow: 1;
@@ -31,17 +49,13 @@
 }
 .App h1>button{
   background: transparent;
-  font-family:PMingLiU;
-  font-size: 30px;
   border-width: 0px;
   color: #2C8EBB;
   cursor: pointer;
-  position: absolute;
-  top: 15px;
-  right: 15px;
 }
-.App h1>button:hover{
+.App >aside button:hover{
   color: red;
+  background: #fff;
 }
 
 .App .todoList> li:nth-child(odd){
