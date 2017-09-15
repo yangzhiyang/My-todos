@@ -1,7 +1,7 @@
 import AV from 'leancloud-storage'
 
-var APP_ID = 'aNm8GqLdo0228CQjcT4Vzr1D-gzGzoHsz'
-var APP_KEY = 'vPCNoH8yYBGNYOfbCFY6DmUe'
+const APP_ID = 'aNm8GqLdo0228CQjcT4Vzr1D-gzGzoHsz'
+const APP_KEY = 'vPCNoH8yYBGNYOfbCFY6DmUe'
 AV.init({
   appId: APP_ID,
   appKey: APP_KEY
@@ -12,12 +12,13 @@ export default AV
 // 所有跟 Todo 相关的 LeanCloud 操作都放到这里
 export const TodoModel = {
   getByUser(user, successFn, errorFn){
-    // 文档见 https://leancloud.cn/docs/leanstorage_guide-js.html#批量操作
+    // 文档见 https://leancloud.cn/docs/leanstorage_guide-js.html#创建查询实例
     let query = new AV.Query('Todo')
+    //查询出deleted属性为false的数据
     query.equalTo('deleted', false)
     query.find().then((response) => {
-      let array = response.map((t) => {
-        return {id: t.id, ...t.attributes}
+      let array = response.map((todo) => {
+        return {id: todo.id, ...todo.attributes}
       })
       successFn.call(null, array)
     }, (error) => {
@@ -34,10 +35,13 @@ export const TodoModel = {
     // 根据文档 https://leancloud.cn/docs/acl-guide.html#单用户权限设置
     // 这样做就可以让这个 Todo 只被当前用户看到
     let acl = new AV.ACL()
-    acl.setPublicReadAccess(false) // 注意这里是 false
+    // 设置公共读权限，注意这里是 false,文档案例为true
+    acl.setPublicReadAccess(false) 
+    //设置仅当前用户「写」权限
     acl.setWriteAccess(AV.User.current(), true)
+    //设置仅当前用户「读」权限
     acl.setReadAccess(AV.User.current(), true)
-
+    //将设置好的ACL实例赋给todo
     todo.setACL(acl);
 
     todo.save().then(function (response) {

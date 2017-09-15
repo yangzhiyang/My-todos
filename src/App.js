@@ -5,14 +5,14 @@ import TodoItem from './TodoItem'
 import 'normalize.css'
 import './reset.css'
 import UserDialog from './UserDialog'
-import {getCurrentUser, signOut,TodoModel} from './leancloud'
+import {getCurrentUser,signOut,TodoModel} from './leancloud'
 import './iconfont.css'
 
 
 
 class App extends Component {
   constructor(props){
-    super(props)
+    super()
     this.state = {
       user: getCurrentUser() ||{},
       newTodo: '',
@@ -38,7 +38,6 @@ class App extends Component {
         onDelete={this.delete.bind(this)}/>
         </li>)
     })
-    console.log(todos)
     return (
       <div className="App">
         <h1>{this.state.user.username||'我'}的待办
@@ -80,8 +79,6 @@ class App extends Component {
     }
   }
   
-  componentDidUpdate(){
-  }
   toggle(e, todo){
     let oldStatus = todo.status
     todo.status = todo.status === 'completed' ? '' : 'completed'
@@ -99,21 +96,25 @@ class App extends Component {
     })
   }
   addTodo(event){
-    let newTodo={
-      title: event.target.value,
-      status: '',
-      deleted: false
-    }
-    TodoModel.create(newTodo, (id) => {
-      newTodo.id = id
-      this.state.todoList.push(newTodo)
-      this.setState({
-        newTodo: '',
-        todoList: this.state.todoList
+    if(event.target.value){
+      let newTodo={
+        title: event.target.value,
+        status: '',
+        deleted: false
+      }
+      TodoModel.create(newTodo, (id) => {
+        newTodo.id = id
+        this.state.todoList.push(newTodo)
+        this.setState({
+          newTodo: '',
+          todoList: this.state.todoList
+        })
+      },(error)=>{
+        console.log(error)
       })
-    },(error)=>{
-      console.log(error)
-    })
+    }else{
+      alert('请输入待办内容')
+    }
   }
   delete(event,todo){
     TodoModel.destroy(todo.id, () => {

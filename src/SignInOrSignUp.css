@@ -1,25 +1,25 @@
 .signInOrSignUp nav{
-    padding: 1em;
-    display: flex;
-    justify-content: center;
-    font-size: 18px;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
 }
 .signInOrSignUp nav label{
-    background: #fff;
-    padding: 6px;
-    margin: 0 5px;
-    position: relative;
+  background: #fff;
+  padding: 6px;
+  margin: 0 5px;
+  position: relative;
 }
 .signInOrSignUp nav label .checked{
-    color: #2C8EBB;
-    border-bottom: 2px solid #2C8EBB;
+  color: #2C8EBB;
+  border-bottom: 2px solid #2C8EBB;
 }
 
 
 .signInOrSignUp nav label:hover{
-    color: #777;
+  color: #777;
 }
 .signInOrSignUp nav input[type="radio"]{
-    display: none;
+  display: none;
 }
 
