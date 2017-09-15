@@ -18,8 +18,8 @@ class App extends Component {
     this.state = {
       user: getCurrentUser() ||{},
       newTodo: '',
-      todoList: []
-      
+      todoList: [],
+      targetBar: "unfinished"  
     }
     let user = getCurrentUser() 
     if(user){
@@ -32,18 +32,15 @@ class App extends Component {
   }
   
   render() {
-    let todos = this.state.todoList
-      .filter((item)=>!item.deleted)
-      .map((item,index)=>{
-      return (<li key={index}> 
-        <TodoItem todo={item} onToggle={this.toggle.bind(this)}
-        onDelete={this.delete.bind(this)}/>
-        </li>)
-    })
+    let Unfinished = this.createTags(this.filterUnfinished())
+    let Finished = this.createTags(this.filterFinished())
+    let Deleted = this.createTags(this.filterDeleted())
+    let todos = this.setTags(Unfinished,Finished,Deleted)
     return (
       <div className="App">
         <aside>
-          <LeftAside user={this.state.user}/>
+          <LeftAside user={this.state.user}
+          changeBars={this.changeBars.bind(this)}/>
           {this.state.user.id ? <button className=" iconfont icon-tuichu" onClick={this.signOut.bind(this)}></button> : null}
         </aside>
 
@@ -131,7 +128,67 @@ class App extends Component {
       this.setState(this.state)
     })
   }
-  
+  changeBars(target) {
+    console.log(target);
+    if(target.classList.contains("unfinished")){
+      this.setState({
+        targetBar: "unfinished"
+      })
+    }else if(target.classList.contains("finished")){
+      this.setState({
+        targetBar: "finished"
+      })
+    }else{
+      this.setState({
+        targetBar: "recycle"
+      })
+    }
+  }
+  filterUnfinished(){
+    let unfinished = []
+    this.state.todoList.forEach(item => {
+      if(item.status ==='' && item.deleted===false){
+        unfinished.push(item)
+    }
+  })
+    return unfinished
+  }
+  filterFinished(){
+    let finidhed = [];
+    this.state.todoList.forEach(item => {
+        if (item.status !== "" && item.deleted === false) {
+            finidhed.push(item);
+        }
+    });
+    return finidhed;
+  }
+  filterDeleted(){
+    let deleted = [];
+    this.state.todoList.forEach(item => {
+        if (item.deleted) {
+            deleted.push(item)
+        }
+    });
+    return deleted
+  }
+  createTags(todos){
+    return todos.map((item,index) => {
+      return (<li key={index}> 
+        <TodoItem todo={item} onToggle={this.toggle.bind(this)}
+        onDelete={this.delete.bind(this)}/>
+        </li>
+      )
+    })
+  }
+  setTags(unfinished,finished,deleted){
+      if (this.state.targetBar === "unfinished") {
+        return unfinished;
+    } else if (this.state.targetBar === "finished") {
+        return finished;
+    } else {
+        return deleted;
+    }
+  }
 }
 
 export default App;

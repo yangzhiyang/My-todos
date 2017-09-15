@@ -5,6 +5,7 @@
 .leftAside > header {
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid;
 }
 .leftAside > header {
     font-size : 1.5em;
@@ -16,4 +17,16 @@
     font: 1em;
     height: 3em;
     line-height: 3em;
+    cursor: pointer;
+    letter-spacing: .2em;
+    color: #fff;
+
+}
+.asideBar > ul >li:hover {
+    font-weight: bolder;
+    color: #2C8EBB;
+}    
+.asideBar > ul >li.checked{
+    font-weight: bolder;
+    color: #2C8EBB;
 }
