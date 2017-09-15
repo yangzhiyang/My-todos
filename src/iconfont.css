@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont';  /* project id 372668 */
-  src: url('//at.alicdn.com/t/font_c6z4fmsoutr6yldi.eot');
-  src: url('//at.alicdn.com/t/font_c6z4fmsoutr6yldi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_c6z4fmsoutr6yldi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_c6z4fmsoutr6yldi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_c6z4fmsoutr6yldi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_372668_k4mx0naffye97ldi.eot');
+  src: url('//at.alicdn.com/t/font_372668_k4mx0naffye97ldi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_372668_k4mx0naffye97ldi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_372668_k4mx0naffye97ldi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_372668_k4mx0naffye97ldi.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family:"iconfont" !important;
@@ -27,3 +27,5 @@
 .icon-checkbox:before { content: "\e62e"; }
 
 .icon-checkbox1:before { content: "\e606"; }
+
+.icon-huifu:before {content: "\e6ae"; }

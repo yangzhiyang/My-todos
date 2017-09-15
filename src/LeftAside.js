@@ -12,7 +12,8 @@ export default class LeftAside extends Component {
         }
         setInterval(()=>{
             this.setState({
-                time: this.getTime()
+                time: this.getTime(),
+                asideBars: []
             })
         },1000)
     }
@@ -39,13 +40,16 @@ export default class LeftAside extends Component {
             e.classList.remove('checked')
         })
         e.target.classList.add('checked')
+        this.setState({
+            asideBars: children
+        });
         this.props.changeBars(e.target)
     }
     render(){
         return (
             <div className="leftAside">
                 <header>
-                    <h2>Hello,{this.props.user.username}</h2>
+                    <h2>Hello！{this.props.user.username}</h2>
                     <div className="time">{this.state.time}</div>
                 </header>
                 <nav className="asideBar">
@@ -54,8 +58,8 @@ export default class LeftAside extends Component {
                         onClick={this.addClass.bind(this)}>待完成</li>
                         <li className="finished"
                         onClick={this.addClass.bind(this)}>已完成</li>
-                        <li className="recycle"
-                        onClick={this.addClass.bind(this)}>回收站</li>
+                        {/* <li className="recycle"
+                        onClick={this.addClass.bind(this)}>回收站</li> */}
                     </ul>
                 </nav>
             </div>

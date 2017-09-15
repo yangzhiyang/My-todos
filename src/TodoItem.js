@@ -12,7 +12,7 @@ export default class TodoItem extends Component{
         <i onClick={this.toggle.bind(this)} className={"iconfont "+(this.props.todo.status === 'completed' ? "icon-checkbox1" : "icon-checkbox")}></i>
                
         <span className="title">{this.props.todo.title}</span>
-       <button  className="iconfont icon-shanchu" onClick={this.delete.bind(this)}></button>
+       <button  className={this.props.todo.deleted? "iconfont icon-huifu":"iconfont icon-shanchu"} onClick={this.delete.bind(this)}></button>
        </div>
      )
     } 

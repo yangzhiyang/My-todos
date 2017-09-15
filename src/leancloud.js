@@ -16,6 +16,7 @@ export const TodoModel = {
     let query = new AV.Query('Todo')
     //查询出deleted属性为false的数据
     query.equalTo('deleted', false)
+    console.log(query);
     query.find().then((response) => {
       let array = response.map((todo) => {
         return {id: todo.id, ...todo.attributes}
@@ -54,17 +55,11 @@ export const TodoModel = {
   update({id, title, status, deleted}, successFn, errorFn){
     // 文档 https://leancloud.cn/docs/leanstorage_guide-js.html#更新对象
     let todo = AV.Object.createWithoutData('Todo', id)
+    //允许其他false 局部更新
     title !== undefined && todo.set('title', title)
     status !== undefined && todo.set('status', status)
     deleted !== undefined && todo.set('deleted', deleted)
-    // 考虑如下场景
-    // update({id:1, title:'hi'})
-    // 调用 update 时，很有可能没有传 status 和 deleted
-    // 也就是说，用户只想「局部更新」
-    // 所以只 set 该 set 的
-    // 考虑如下场景
-    // update({id:1, title: '', status: null}}
-    // 用户想将 title 和 status 置空
+
     todo.save().then((response) => {
       successFn && successFn.call(null)
     }, (error) => errorFn && errorFn.call(null, error))

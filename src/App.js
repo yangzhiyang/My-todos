@@ -27,7 +27,10 @@ class App extends Component {
         let stateCopy = JSON.parse(JSON.stringify(this.state))
         stateCopy.todoList = todos  
         this.setState(stateCopy)
+        console.log(this.state.todoList);
+        
         })
+        
     }
   }
   
@@ -35,6 +38,7 @@ class App extends Component {
     let Unfinished = this.createTags(this.filterUnfinished())
     let Finished = this.createTags(this.filterFinished())
     let Deleted = this.createTags(this.filterDeleted())
+    console.log(this.filterUnfinished());
     let todos = this.setTags(Unfinished,Finished,Deleted)
     return (
       <div className="App">
@@ -81,8 +85,10 @@ class App extends Component {
         let stateCopy = JSON.parse(JSON.stringify(this.state))
         stateCopy.todoList = todos  
         this.setState(stateCopy)
+        console.log(todos);
         })
     }
+    console.log(user);
   }
   
   toggle(e, todo){
@@ -154,13 +160,13 @@ class App extends Component {
     return unfinished
   }
   filterFinished(){
-    let finidhed = [];
+    let finished = []
     this.state.todoList.forEach(item => {
-        if (item.status !== "" && item.deleted === false) {
-            finidhed.push(item);
-        }
-    });
-    return finidhed;
+      if(item.status !=='' && item.deleted===false){
+        finished.push(item)
+    }
+  })
+    return finished
   }
   filterDeleted(){
     let deleted = [];
@@ -168,7 +174,7 @@ class App extends Component {
         if (item.deleted) {
             deleted.push(item)
         }
-    });
+    })
     return deleted
   }
   createTags(todos){

@@ -5,12 +5,12 @@
 .leftAside > header {
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid;
+    color: #fff;
 }
 .leftAside > header {
     font-size : 1.5em;
-    height: 3em;
-    line-height: 1.5em;
+    height: 4em;
+    line-height: 2em;
 }
 
 .asideBar > ul >li {
@@ -20,13 +20,20 @@
     cursor: pointer;
     letter-spacing: .2em;
     color: #fff;
+    border-top: 2px dotted #298DBB;
+    border-bottom: 2px dotted #298DBB;
+    margin-top: -2px;
 
 }
 .asideBar > ul >li:hover {
     font-weight: bolder;
     color: #2C8EBB;
+    background: rgba(0,0,0,.3);
+    
 }    
 .asideBar > ul >li.checked{
     font-weight: bolder;
     color: #2C8EBB;
+    background: rgba(0,0,0,.3);
+    
 }
