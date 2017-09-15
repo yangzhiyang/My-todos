@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import './App.css'
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
-import 'normalize.css'
-import './reset.css'
 import UserDialog from './UserDialog'
 import {getCurrentUser,signOut,TodoModel} from './leancloud'
+import LeftAside from './LeftAside'
+
+import './App.css'
+import 'normalize.css'
+import './reset.css'
 import './iconfont.css'
 
 
@@ -40,22 +42,26 @@ class App extends Component {
     })
     return (
       <div className="App">
-        <h1>{this.state.user.username||'我'}的待办
-          {this.state.user.id ? <button className="iconfont icon-tuichu" onClick={this.signOut.bind(this)}></button> : null}
-        </h1>
-        <div className="inputWrapper">
-          <TodoInput content={this.state.newTodo} 
-            onChange={this.changeTitle.bind(this)}
-            onSubmit={this.addTodo.bind(this)}/>
-        </div>
-        <ol className="todoList" >
-          {todos}
-        </ol>
-        {this.state.user.id ? null :
-        <UserDialog 
-          onSignIn={this.onSignUpOrSignIn.bind(this)}
-          onSignUp={this.onSignUpOrSignIn.bind(this)}
-        />}
+        <LeftAside user={this.state.user}/>
+        <main>
+          <h1>{this.state.user.username||'我'}的待办
+            {/* {this.state.user.id ? <button className="iconfont icon-tuichu" onClick={this.signOut.bind(this)}></button> : null} */}
+          </h1>
+          <div className="inputWrapper">
+            <TodoInput content={this.state.newTodo} 
+              onChange={this.changeTitle.bind(this)}
+              onSubmit={this.addTodo.bind(this)}/>
+          </div>
+          <ol className="todoList" >
+            {todos}
+          </ol>
+          {this.state.user.id ? null :
+          <UserDialog 
+            onSignIn={this.onSignUpOrSignIn.bind(this)}
+            onSignUp={this.onSignUpOrSignIn.bind(this)}
+          />}
+
+        </main>
       </div>
     );
   }

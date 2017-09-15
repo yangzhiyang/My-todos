@@ -1,9 +1,10 @@
 body {
   background:#2C8EBB;
+  height: 90vh;
   
  }
  #root{
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  height: 100%;
 }

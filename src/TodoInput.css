@@ -1,8 +1,8 @@
 .TodoInput{
-  width: 100%;
+  width: 32em;
   line-height: 1.8;
   margin-bottom: 1em;
-  font-size: 16px;
+  font-size: 24px;
   padding: 0 .2em;
-  
+  text-align: center;
 }

@@ -1,0 +1,21 @@
+.leftAside {
+    text-align: center;   
+    background: #eee;
+    border-radius: 10px 0 0 10px;
+    padding: 20px 0;
+}
+.leftAside > header {
+    display: flex;
+    flex-direction: column;
+}
+.leftAside > header {
+    font-size : 1.5em;
+    height: 3em;
+    line-height: 1.5em;
+}
+
+.asideBar > ul >li {
+    font: 1em;
+    height: 3em;
+    line-height: 3em;
+}
