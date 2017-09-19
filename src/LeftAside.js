@@ -38,6 +38,7 @@ export default class LeftAside extends Component {
         let children = [].slice.call(liList)
         children.map((e,index)=>{
             e.classList.remove('checked')
+            return undefined
         })
         e.target.classList.add('checked')
         this.setState({

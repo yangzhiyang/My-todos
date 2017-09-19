@@ -110,6 +110,7 @@ export function getCurrentUser () {
 }
 export function signOut () {
   AV.User.logOut()
+  console.log(1);
   return undefined
 }
 
