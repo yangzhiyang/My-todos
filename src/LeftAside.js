@@ -36,9 +36,9 @@ export default class LeftAside extends Component {
     addClass(e){
         let liList = document.querySelectorAll('.asideBar>ul>li')
         let children = [].slice.call(liList)
-        children.map((e,index)=>{
+        
+        children.forEach((e,index)=>{
             e.classList.remove('checked')
-            return undefined
         })
         e.target.classList.add('checked')
         this.setState({

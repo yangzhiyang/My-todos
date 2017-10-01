@@ -9,7 +9,7 @@ import './SignInOrSignUp.css'
      super(props)
      this.state = {
        selected: 'signIn'
-     }
+    }
    }
  
    switch (e) {

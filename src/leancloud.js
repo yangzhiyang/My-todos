@@ -16,7 +16,6 @@ export const TodoModel = {
     let query = new AV.Query('Todo')
     //查询出deleted属性为false的数据
     query.equalTo('deleted', false)
-    console.log(query);
     query.find().then((response) => {
       let array = response.map((todo) => {
         return {id: todo.id, ...todo.attributes}
@@ -81,6 +80,7 @@ export function signUp (email, username, password, successFn, errorFn) {
   user.setEmail(email)
 
   user.signUp().then(function (loginedUser) {
+    console.log(loginedUser);
     let user = getUserFromAVUser(loginedUser)
     successFn.call(null, user)
   }, function (error) {
@@ -110,7 +110,6 @@ export function getCurrentUser () {
 }
 export function signOut () {
   AV.User.logOut()
-  console.log(1);
   return undefined
 }
 

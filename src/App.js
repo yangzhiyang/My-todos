@@ -14,7 +14,7 @@ import './iconfont.css'
 
 class App extends Component {
   constructor(props){
-    super()
+    super(props)
     this.state = {
       user: getCurrentUser() ||{},
       newTodo: '',
@@ -27,7 +27,6 @@ class App extends Component {
         let stateCopy = JSON.parse(JSON.stringify(this.state))
         stateCopy.todoList = todos  
         this.setState(stateCopy)
-        console.log(this.state.todoList);
         
         })
         
@@ -38,7 +37,6 @@ class App extends Component {
     let Unfinished = this.createTags(this.filterUnfinished())
     let Finished = this.createTags(this.filterFinished())
     let Deleted = this.createTags(this.filterDeleted())
-    console.log(this.filterUnfinished());
     let todos = this.setTags(Unfinished,Finished,Deleted)
     return (
       <div className="App">
@@ -85,10 +83,8 @@ class App extends Component {
         let stateCopy = JSON.parse(JSON.stringify(this.state))
         stateCopy.todoList = todos  
         this.setState(stateCopy)
-        console.log(todos);
         })
     }
-    console.log(user);
   }
   
   toggle(e, todo){
@@ -135,7 +131,6 @@ class App extends Component {
     })
   }
   changeBars(target) {
-    console.log(target);
     if(target.classList.contains("unfinished")){
       this.setState({
         targetBar: "unfinished"

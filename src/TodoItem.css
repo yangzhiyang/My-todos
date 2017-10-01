@@ -15,7 +15,7 @@
  .TodoItem>.title{
    flex-grow: 1;
    padding: 0 .5em;
-   width: 400px;
+   max-width: 48em;
 }
 .TodoItem>.completed~.title{
   text-decoration: line-through;
